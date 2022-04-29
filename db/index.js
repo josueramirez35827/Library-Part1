@@ -1,19 +1,20 @@
-const mongoose = require("mongoose")
-require('dotenv').config()
+const mongoose = require("mongoose");
 
-MONGO_URI = process.env.MONGO_URI
-
-mongoose.connect(MONGO_URI, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-})
-
+mongoose
+  .connect(
+    'mongodb+srv://m001-student:m001-mongodb-basics@sandbox.iyacr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+    {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+    }
+  )
   .then(() => {
-    console.log("Connect to MongoDB")
+    console.log("Successfully connected to MongoDB.");
   })
   .catch((e) => {
-  console.error("Connection error", e.message)
-  })
+    console.error("Connection error", e.message);
+  });
 
-const db = mongoose.connection
-  module.exports = db
+const db = mongoose.connection;
+
+module.exports = db;
